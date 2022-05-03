@@ -1,0 +1,79 @@
+{
+  "name": "videojs-vast-vpaid-waterfall",
+  "version": "1.1.2011",
+  "description": "Mobile tap controls and Ads for Video.js",
+  "repository": "center328/mandi-player",
+  "main": "dist/videojs-vast-vpaid-waterfall.cjs.js",
+  "module": "dist/videojs-vast-vpaid-waterfall.es.js",
+  "browser": "dist/videojs-vast-vpaid-waterfall.js",
+  "generator-videojs-plugin": {
+    "version": "8.0.0"
+  },
+  "scripts": {
+    "build": "npm-run-all -s clean -p build:*",
+    "build:css": "postcss -o dist/videojs-vast-vpaid-waterfall.css --config scripts/postcss.config.js src/plugin.css",
+    "build:js": "rollup -c scripts/rollup.config.js",
+    "build:lang": "vjslang --dir dist/lang",
+    "clean": "shx rm -rf ./dist ./cjs ./es && shx mkdir -p ./dist ./cjs ./es",
+    "lint": "vjsstandard",
+    "start": "npm-run-all -p server watch",
+    "watch": "npm-run-all -p watch:*",
+    "watch:css": "npm run build:css -- -w",
+    "watch:js": "npm run build:js -- -w",
+    "prepublishOnly": "npm-run-all build-prod && vjsverify --verbose"
+  },
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6"
+  },
+  "keywords": [
+    "videojs",
+    "videojs-plugin",
+    "vast-vpaid-waterfall",
+    "videojs-vast-vpaid-waterfall"
+  ],
+  "author": "arezoumandi <git@center328>",
+  "license": "MIT",
+  "vjsstandard": {
+    "ignore": [
+      "es",
+      "cjs",
+      "dist"
+    ]
+  },
+  "files": [
+    "cjs/",
+    "dist/",
+    "es/",
+    "scripts/",
+    "src/"
+  ],
+  "lint-staged": {
+    "*.js": "vjsstandard --fix",
+    "README.md": "doctoc --notitle"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "swfobject": "^2.2.1",
+    "vast-client": "^3.2.0",
+    "video.js": "^7.18.1",
+    "videojs-contrib-ads": "^6.9.0",
+    "vpaid-flash-client": "^1.0.2",
+    "vpaid-html5-client": "^0.1.14"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.17.9",
+    "@videojs/generator-helpers": "^3.2.0",
+    "husky": "^7.0.4",
+    "jsdoc": "^3.6.10",
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "rollup": "^2.71.1",
+    "sinon": "^13.0.2",
+    "videojs-generate-postcss-config": "^2.1.1",
+    "videojs-generate-rollup-config": "^7.0.0",
+    "videojs-generator-verify": "^4.0.1",
+    "videojs-languages": "^2.0.0",
+    "videojs-standard": "^9.0.1"
+  }
+}
